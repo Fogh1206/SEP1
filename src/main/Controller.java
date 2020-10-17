@@ -97,7 +97,7 @@ public class Controller
      */
     EventHandler<ActionEvent> event = new EventHandler<ActionEvent>()
     {
-// jeblo
+
       public void handle(ActionEvent e)
       {
         System.out.println("kazaki");
