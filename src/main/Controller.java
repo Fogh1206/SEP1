@@ -173,8 +173,12 @@ public class Controller
 
     projectLbl.setPrefWidth(230);
     projectBar.getButtons().addAll(projectLbl, projectBtn);
+    System.out.println("guziory "+projectBar.getButtons().get(0));
+    System.out.println(projectBar);
+
 
     projectListContainer.getChildren().add(projectBar);
+
   }
 
   private void search()
@@ -199,13 +203,27 @@ public class Controller
        */
       for (int i = 0; i < Main.projects.size(); i++)
       {
-        if (Main.projects.get(i).getProjectName().contains(searchBar.getText()))
+        ButtonBar temp = (ButtonBar) projectListContainer.getChildren().get(i);
+        Label temp2 = (Label) temp.getButtons().get(0);
+        System.out.println("zero: "+temp2.getText());
+        if (temp2.getText().contains(searchBar.getText()))
         {
+          System.out.println("I: " + i);
+          System.out.println("name " + Main.projects.get(i).getProjectName());
+          System.out.println("bar" + searchBar.getText());
+          /*
+
           addProjectToList(Main.projects.get(i));
 
+
+           */
+
           System.out.println("Dodano A: " + Main.projects.get(i));
+
+          projectListContainer.getChildren().get(i).toBack();
         }
       }
+      /*
       for (int i = 0; i < Main.projects.size(); i++)
       {
         if (!Main.projects.get(i).getProjectName()
@@ -215,10 +233,15 @@ public class Controller
           System.out.println("Dodano B: " + Main.projects.get(i));
         }
       }
+
+       */
+      /*
       for (int i = 0; i < Main.projects.size(); i++)
       {
         projectListContainer.getChildren().remove(0);
       }
+
+       */
     };
 
     searchBar.setOnAction(event);
