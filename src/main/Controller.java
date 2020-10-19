@@ -173,9 +173,8 @@ public class Controller
 
     projectLbl.setPrefWidth(230);
     projectBar.getButtons().addAll(projectLbl, projectBtn);
-    System.out.println("guziory "+projectBar.getButtons().get(0));
+    System.out.println("guziory " + projectBar.getButtons().get(0));
     System.out.println(projectBar);
-
 
     projectListContainer.getChildren().add(projectBar);
 
@@ -187,61 +186,24 @@ public class Controller
     r.keyPress(KeyCode.getKeyCode("Enter"));
     r.keyRelease(KeyCode.getKeyCode("Enter"));
 
-    System.out.println("zielony");
-    System.out.println(searchBar.getText());
-    System.out.println("bialy");
     EventHandler<ActionEvent> event = e -> {
-      /*
-      for (Project project : Main.projects)
+      ArrayList<Node> list = new ArrayList<>();
+      for (Node listnode :  projectListContainer.getChildren())
       {
-        if (project.getProjectName().contains(searchBar.getText())
-        {
-
-        }
-      }
-
-       */
-      for (int i = 0; i < Main.projects.size(); i++)
-      {
-        ButtonBar temp = (ButtonBar) projectListContainer.getChildren().get(i);
+        ButtonBar temp = (ButtonBar) listnode;
         Label temp2 = (Label) temp.getButtons().get(0);
-        System.out.println("zero: "+temp2.getText());
+        System.out.println("zero: " + temp2.getText());
         if (temp2.getText().contains(searchBar.getText()))
         {
-          System.out.println("I: " + i);
-          System.out.println("name " + Main.projects.get(i).getProjectName());
-          System.out.println("bar" + searchBar.getText());
-          /*
-
-          addProjectToList(Main.projects.get(i));
-
-
-           */
-
-          System.out.println("Dodano A: " + Main.projects.get(i));
-
-          projectListContainer.getChildren().get(i).toBack();
-        }
-      }
-      /*
-      for (int i = 0; i < Main.projects.size(); i++)
-      {
-        if (!Main.projects.get(i).getProjectName()
-            .contains(searchBar.getText()))
-        {
-          addProjectToList(Main.projects.get(i));
-          System.out.println("Dodano B: " + Main.projects.get(i));
+          list.add(listnode);
+        //  projectListContainer.getChildren().get(i).toBack();
         }
       }
 
-       */
-      /*
-      for (int i = 0; i < Main.projects.size(); i++)
+      for (Node nodes : list)
       {
-        projectListContainer.getChildren().remove(0);
+        nodes.toBack();
       }
-
-       */
     };
 
     searchBar.setOnAction(event);
